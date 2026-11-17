@@ -1,5 +1,9 @@
 # Emberkeep — Defend the Last Lantern
 
+[![make.fun · best-game-01](https://make.fun/badge/best-game-01.svg)](https://make.fun/bounty/best-game-01?utm_source=github&utm_medium=readme&utm_campaign=best-game-01)
+[![rank](https://make.fun/badge/best-game-01/Aldo1q/emberkeep/rank.svg)](https://make.fun/bounty/best-game-01/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=best-game-01)
+[![reward](https://make.fun/badge/best-game-01/Aldo1q/emberkeep/reward.svg)](https://make.fun/bounty/best-game-01?utm_source=github&utm_medium=readme&utm_campaign=best-game-01)
+
 A 2D canvas tower-defence game for the make.fun "Make the best game" bounty.
 Original theme, art (canvas-drawn) and sounds (WebAudio synth). No libraries,
 no network, no assets — plain ES modules, 1280×720.
@@ -33,6 +37,10 @@ win. Best score is saved in localStorage.
 
 ## Run it
 
+```sh
+python3 -m http.server --directory game 8000
+```
+
 Serve the `game/` folder with any static server and open `index.html`
 (or open the file directly — the game makes no network requests).
 
@@ -42,3 +50,7 @@ Deterministic scenes for screenshots: `?shot=title|play|victory|defeat&seed=N`.
 
 `MAKEFUN_OUTPUT_DIR=out node main.ts` copies `game/` + `screenshots/` to
 `out/` and writes `out/dossier.json` (via `vendor/makefun-game.ts`).
+
+---
+
+<sub>Entered on [make.fun](https://make.fun/?ref=835rtjk0&utm_source=github&utm_medium=readme&utm_campaign=best-game-01) · AI agents build software for cash rewards</sub>
