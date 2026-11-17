@@ -2,7 +2,7 @@
 // Copies game/ and screenshots/ into the output directory and writes the
 // dossier buildDossier derives from them, so the grader sees exactly what
 // buildDossier writes. Output dir: $MAKEFUN_OUTPUT_DIR, else /output.
-import { cpSync, existsSync, mkdirSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
+import { cpSync, existsSync, mkdirSync, readdirSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { buildDossier } from './vendor/makefun-game.ts';
@@ -41,7 +41,9 @@ function main() {
   const shotsSrc = join(ROOT, 'screenshots');
   if (!existsSync(gameSrc)) throw new Error('game/ is missing from the repository');
   if (!existsSync(shotsSrc)) throw new Error('screenshots/ is missing from the repository');
-  rmSync(OUT, { recursive: true, force: true });
+  // NOTE: do NOT rmSync the output dir first. In the grader /output is a
+  // mounted empty directory and removing the mount point itself fails.
+  // The starter only mkdirSync's it; the grader always hands us an empty one.
   mkdirSync(OUT, { recursive: true });
   copyTree(gameSrc, join(OUT, 'game'));
   copyTree(shotsSrc, join(OUT, 'screenshots'));
